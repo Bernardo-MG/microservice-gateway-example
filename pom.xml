@@ -237,6 +237,7 @@
 		<!-- =========== DEPENDENCIES VERSIONS ============ -->
 		<!-- ============================================== -->
 		<aspectj.version>1.9.6</aspectj.version>
+		<bouncycastle.version>1.68</bouncycastle.version>
 		<classmate.version>1.5.1</classmate.version>
 		<commons.logging.version>1.2</commons.logging.version>
 		<glassfish.el>2.2</glassfish.el>
@@ -328,6 +329,18 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway</artifactId>
 			<version>${spring.boot.cloud.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Spring Boot Starter: Cloud Contract Stub Runner -->
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
+			<version>${spring.boot.cloud.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<groupId>org.springframework.boot</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<!-- Spring Boot Starter: AOP -->
@@ -436,6 +449,12 @@
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-core</artifactId>
 			<version>${reactor.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Bouncy Castle Provider -->
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>${bouncycastle.version}</version>
 		</dependency>
 		<!-- ============================================== -->
 		<!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
@@ -594,42 +613,42 @@
 	<!-- ****************** REPORTS ******************* -->
 	<!-- ********************************************** -->
 
-   <reporting>
-      <plugins>
-         <plugin>
-            <!-- Checkstyle -->
-            <!-- Checks that the source files comply with style standards -->
-            <!-- It is using a customized rules file -->
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
-            <configuration>
-               <!-- The customized rules file -->
-               <configLocation>${project.basedir}/src/config/checkstyle/checkstyle-rules.xml</configLocation>
-            </configuration>
-         </plugin>
-         <plugin>
-            <!-- PMD -->
-            <!-- Checks that the code complies with a series of code quality rules -->
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-pmd-plugin</artifactId>
-            <configuration>
-               <rulesets>
-                  <!-- The customized rules file -->
-                  <ruleset>${project.basedir}/src/config/pmd/pmd-rules.xml</ruleset>
-               </rulesets>
-               <excludes>
-                  <!-- Excludes generated code -->
-                  <exclude>**/generated/**/*</exclude>
-               </excludes>
-            </configuration>
-         </plugin>
-         <plugin>
-             <!-- SpotBugs -->
-             <!-- Checks for patterns which are prone to errors -->
-            <groupId>com.github.spotbugs</groupId>
-            <artifactId>spotbugs-maven-plugin</artifactId>
-         </plugin>
-      </plugins>
-   </reporting>
+	<reporting>
+		<plugins>
+			<plugin>
+				<!-- Checkstyle -->
+				<!-- Checks that the source files comply with style standards -->
+				<!-- It is using a customized rules file -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<configuration>
+					<!-- The customized rules file -->
+					<configLocation>${project.basedir}/src/config/checkstyle/checkstyle-rules.xml</configLocation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- PMD -->
+				<!-- Checks that the code complies with a series of code quality rules -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<configuration>
+					<rulesets>
+						<!-- The customized rules file -->
+						<ruleset>${project.basedir}/src/config/pmd/pmd-rules.xml</ruleset>
+					</rulesets>
+					<excludes>
+						<!-- Excludes generated code -->
+						<exclude>**/generated/**/*</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- SpotBugs -->
+				<!-- Checks for patterns which are prone to errors -->
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>
