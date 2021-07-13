@@ -320,25 +320,9 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
 		</dependency>
-		<dependency>
-			<!-- Spring Web -->
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-		</dependency>
-		<dependency>
-			<!-- Spring Web MVC -->
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-		</dependency>
 		<!-- ============================================== -->
 		<!-- =============== SPRING BOOT ================== -->
 		<!-- ============================================== -->
-		<dependency>
-			<!-- Spring Boot Starter: Web -->
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<version>${spring.boot.version}</version>
-		</dependency>
 		<dependency>
 			<!-- Spring Boot Starter: Cloud Gateway -->
 			<groupId>org.springframework.cloud</groupId>
