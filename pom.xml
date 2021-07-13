@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>com.bernardomg.maven</groupId>
 		<artifactId>base-pom</artifactId>
-		<version>1.3.5</version>
+		<version>1.4.2</version>
 	</parent>
 
 	<!-- ********************************************** -->
@@ -237,20 +237,20 @@
 		<!-- =========== DEPENDENCIES VERSIONS ============ -->
 		<!-- ============================================== -->
 		<aspectj.version>1.9.6</aspectj.version>
-		<byteBuddy.version>1.10.13</byteBuddy.version>
 		<classmate.version>1.5.1</classmate.version>
 		<commons.logging.version>1.2</commons.logging.version>
 		<glassfish.el>2.2</glassfish.el>
 		<guava.version>29.0-jre</guava.version>
 		<hamcrest.version>2.2</hamcrest.version>
-		<junit.jupiter.version>5.6.2</junit.jupiter.version>
-		<log4j.version>2.13.3</log4j.version>
-		<mockito.version>3.5.10</mockito.version>
+		<junit.jupiter.version>5.7.2</junit.jupiter.version>
+		<log4j.version>2.14.1</log4j.version>
+		<mockito.version>3.11.2</mockito.version>
+		<reactor.version>3.4.6</reactor.version>
 		<servlet.version>4.0.1</servlet.version>
-		<slf4j.version>1.7.30</slf4j.version>
+		<slf4j.version>1.7.31</slf4j.version>
 		<spring.boot.version>2.5.2</spring.boot.version>
 		<spring.boot.cloud.version>3.0.3</spring.boot.cloud.version>
-		<spring.version>5.2.8.RELEASE</spring.version>
+		<spring.version>5.3.8</spring.version>
 		<!-- ============================================== -->
 		<!-- ============== PLUGINS VERSIONS ============== -->
 		<!-- ============================================== -->
@@ -258,7 +258,7 @@
 		<!-- ============================================== -->
 		<!-- ================= MAVEN SITE ================= -->
 		<!-- ============================================== -->
-		<site.skin.version>2.0.10</site.skin.version>
+		<site.skin.version>2.2.3</site.skin.version>
 	</properties>
 
 	<!-- ********************************************** -->
@@ -448,10 +448,10 @@
 			<version>${commons.logging.version}</version>
 		</dependency>
 		<dependency>
-			<!-- Byte Buddy -->
-			<groupId>net.bytebuddy</groupId>
-			<artifactId>byte-buddy</artifactId>
-			<version>${byteBuddy.version}</version>
+			<!-- Reactor core -->
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+			<version>${reactor.version}</version>
 		</dependency>
 		<!-- ============================================== -->
 		<!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
@@ -610,60 +610,42 @@
 	<!-- ****************** REPORTS ******************* -->
 	<!-- ********************************************** -->
 
-	<reporting>
-		<plugins>
-			<plugin>
-				<!-- FindBugs -->
-				<!-- Checks for patterns which are prone to errors -->
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<configuration>
-					<!-- Exclusion patterns -->
-					<excludeFilterFile>${project.basedir}/src/config/findbugs/findbugs-exclude.xml</excludeFilterFile>
-				</configuration>
-			</plugin>
-			<plugin>
-				<!-- Checkstyle -->
-				<!-- Checks that the source files comply with style standards -->
-				<!-- It is using a customized rules file -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<configuration>
-					<!-- The customized rules file -->
-					<configLocation>${project.basedir}/src/config/checkstyle/checkstyle-rules.xml</configLocation>
-					<!-- Excludes generated code -->
-					<excludes>**/generated/**/*</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<!-- Javadoc -->
-				<!-- Generates the javadocs -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<configuration>
-					<sourceFileExcludes>
-						<!-- Excludes generated code -->
-						<exclude>**/generated/**/*</exclude>
-					</sourceFileExcludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<!-- PMD -->
-				<!-- Checks that the code complies with a series of code quality rules -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<configuration>
-					<rulesets>
-						<!-- The customized rules file -->
-						<ruleset>${project.basedir}/src/config/pmd/pmd-rules.xml</ruleset>
-					</rulesets>
-					<excludes>
-						<!-- Excludes generated code -->
-						<exclude>**/generated/**/*</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
+   <reporting>
+      <plugins>
+         <plugin>
+            <!-- Checkstyle -->
+            <!-- Checks that the source files comply with style standards -->
+            <!-- It is using a customized rules file -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <configuration>
+               <!-- The customized rules file -->
+               <configLocation>${project.basedir}/src/config/checkstyle/checkstyle-rules.xml</configLocation>
+            </configuration>
+         </plugin>
+         <plugin>
+            <!-- PMD -->
+            <!-- Checks that the code complies with a series of code quality rules -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <configuration>
+               <rulesets>
+                  <!-- The customized rules file -->
+                  <ruleset>${project.basedir}/src/config/pmd/pmd-rules.xml</ruleset>
+               </rulesets>
+               <excludes>
+                  <!-- Excludes generated code -->
+                  <exclude>**/generated/**/*</exclude>
+               </excludes>
+            </configuration>
+         </plugin>
+         <plugin>
+             <!-- SpotBugs -->
+             <!-- Checks for patterns which are prone to errors -->
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-maven-plugin</artifactId>
+         </plugin>
+      </plugins>
+   </reporting>
 
 </project>
