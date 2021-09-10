@@ -104,14 +104,6 @@
 							<artifactId>lifecycle-mapping</artifactId>
 							<version>${plugin.lifecycle.version}</version>
 							<configuration>
-								<!-- Sample fix for plugin executions -->
-								<!-- This is to be used in case a Maven plugins gives problems in 
-									Eclipse -->
-								<!-- <lifecycleMappingMetadata> <pluginExecutions> <pluginExecution> 
-									<pluginExecutionFilter> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> 
-									<versionRange>[0.5,)</versionRange> <goals> <goal>prepare-agent</goal> </goals> 
-									</pluginExecutionFilter> <action> <ignore /> </action> </pluginExecution> 
-									</pluginExecutions> </lifecycleMappingMetadata> -->
 								<downloadSources>true</downloadSources>
 								<downloadJavadocs>true</downloadJavadocs>
 							</configuration>
@@ -222,17 +214,9 @@
 
 	<properties>
 		<!-- ============================================== -->
-		<!-- =============== MAVEN VERSION ================ -->
-		<!-- ============================================== -->
-		<maven.version>3.5.0</maven.version>
-		<!-- ============================================== -->
-		<!-- ================ JAVA VERSION ================ -->
-		<!-- ============================================== -->
-		<java.version>1.8</java.version>
-		<!-- ============================================== -->
 		<!-- =============== MANIFEST DATA ================ -->
 		<!-- ============================================== -->
-		<manifest.name>com/bernardomg/example/microservice</manifest.name>
+		<manifest.name>com/bernardomg/example/microservice/gateway</manifest.name>
 		<!-- ============================================== -->
 		<!-- =========== DEPENDENCIES VERSIONS ============ -->
 		<!-- ============================================== -->
