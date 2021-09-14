@@ -511,12 +511,7 @@
 
    <build>
       <defaultGoal>clean package</defaultGoal>
-      <resources>
-         <resource>
-            <directory>src/main/resources</directory>
-            <filtering>true</filtering>
-         </resource>
-      </resources>
+      <finalName>gateway</finalName>
       <pluginManagement>
          <plugins>
             <plugin>
