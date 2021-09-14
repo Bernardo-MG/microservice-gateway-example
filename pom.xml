@@ -221,7 +221,7 @@
       <servlet.version>4.0.1</servlet.version>
       <slf4j.version>1.7.31</slf4j.version>
       <spring.boot.version>2.5.2</spring.boot.version>
-      <spring.boot.cloud.version>3.0.3</spring.boot.cloud.version>
+      <spring.cloud.dependencies.version>2020.0.3</spring.cloud.dependencies.version>
       <spring.version>5.3.8</spring.version>
       <!-- ============================================== -->
       <!-- ============== PLUGINS VERSIONS ============== -->
@@ -244,6 +244,14 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-framework-bom</artifactId>
             <version>${spring.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+         <dependency>
+            <!-- Spring Cloud Dependencies -->
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>${spring.cloud.dependencies.version}</version>
             <type>pom</type>
             <scope>import</scope>
          </dependency>
@@ -293,26 +301,31 @@
          <artifactId>spring-oxm</artifactId>
       </dependency>
       <!-- ============================================== -->
-      <!-- =============== SPRING BOOT ================== -->
+      <!-- ============== SPRING CLOUD ================== -->
       <!-- ============================================== -->
       <dependency>
          <!-- Spring Boot Starter: Cloud Gateway -->
          <groupId>org.springframework.cloud</groupId>
          <artifactId>spring-cloud-starter-gateway</artifactId>
-         <version>${spring.boot.cloud.version}</version>
       </dependency>
       <dependency>
-         <!-- Spring Boot Starter: Cloud Contract Stub Runner -->
+         <!-- Spring Cloud Starter: Config -->
          <groupId>org.springframework.cloud</groupId>
-         <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
-         <version>${spring.boot.cloud.version}</version>
-         <exclusions>
-            <exclusion>
-               <artifactId>spring-boot-starter-web</artifactId>
-               <groupId>org.springframework.boot</groupId>
-            </exclusion>
-         </exclusions>
+         <artifactId>spring-cloud-starter-config</artifactId>
       </dependency>
+      <dependency>
+         <!-- Spring Cloud Starter: Eureka Config -->
+         <groupId>org.springframework.cloud</groupId>
+         <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+      </dependency>
+      <dependency>
+         <!-- Spring Cloud Starter: Bootstrap -->
+         <groupId>org.springframework.cloud</groupId>
+         <artifactId>spring-cloud-starter-bootstrap</artifactId>
+      </dependency>
+      <!-- ============================================== -->
+      <!-- =============== SPRING BOOT ================== -->
+      <!-- ============================================== -->
       <dependency>
          <!-- Spring Boot Starter: AOP -->
          <groupId>org.springframework.boot</groupId>

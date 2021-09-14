@@ -26,6 +26,7 @@ package com.bernardomg.example.microservice.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * Application runnable class. This allows Spring Boot to run the application.
@@ -33,13 +34,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration.class })
+@EnableDiscoveryClient
 public class Application {
 
     /**
      * Runnable main method.
      * 
-     * @param args execution parameters
+     * @param args
+     *            execution parameters
      */
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);
